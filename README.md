@@ -78,11 +78,25 @@ Designed as a course project for ENSE 352, this system challenges users to mimic
 ## ⚙️ Code Snippets
 
 <details>
-<summary><b>🔁 Blink LED Function (SysTick)</b></summary>
+<summary><b>🚗 Knight Rider LED Sequence (Startup Animation)</b></summary>
 
 ```c
-void blink_led(GPIO_TypeDef *port, uint16_t pin) {
-    port->ODR |= pin;
-    delay_ms(500);
-    port->ODR &= ~pin;
+void knight_rider_sequence(void) {
+    uint16_t leds[] = {GPIO_ODR_ODR0, GPIO_ODR_ODR1, GPIO_ODR_ODR2, GPIO_ODR_ODR3};
+    for (int repeat = 0; repeat < 2; repeat++) {
+        // Forward
+        for (int i = 0; i < 4; i++) {
+            GPIOA->ODR |= leds[i];
+            delay_ms(100);
+            GPIOA->ODR &= ~leds[i];
+        }
+        // Backward
+        for (int i = 2; i > 0; i--) {
+            GPIOA->ODR |= leds[i];
+            delay_ms(100);
+            GPIOA->ODR &= ~leds[i];
+        }
+    }
 }
+
+
