@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img src="images/banner.png" alt="Simon Says STM32 Banner" />
+  <img src="banner.png" alt="Simon Says STM32 Banner" />
 </p>
 
 A real-time memory game implemented on the STM32F103RB microcontroller using C and GPIO interrupts.  
